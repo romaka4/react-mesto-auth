@@ -35,7 +35,9 @@ function App() {
     .then((data) =>{
       if (data.token) {
         localStorage.setItem('token', data.token);
-        handleTokenCheck();
+        setEmail(email);
+        handleLogin();
+        navigate('/', {replace: true});
       }
     })
     .catch(() =>{
@@ -60,6 +62,7 @@ function App() {
     })
   }
   React.useEffect(() => {
+    if (loggedIn) {
     api.getProfile()
     .then((res) => {
       setCurrentUser(res);
@@ -67,7 +70,7 @@ function App() {
     .catch((err) => { 
       console.log(`${err}`);
     })
-  }, [])
+  }}, [loggedIn])
   React.useEffect(() => {
     handleTokenCheck()
   }, [])
