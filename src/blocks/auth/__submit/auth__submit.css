@@ -15,3 +15,6 @@
   border: none;
   margin-top: 186px;
 }
+.auth__submit:hover {
+  opacity: 0.5;
+}
